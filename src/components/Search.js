@@ -10,17 +10,16 @@ import { useNavigate } from "react-router-dom";
 
 function Search({ hideButtons = false }) {
 
-
     const [input, setInput] = useState("");
     const navigate = useNavigate();
 
     const search = (e) => {
         e.preventDefault();
 
-       
-
-        navigate('/search')
+        navigate(`/search?${input}`)
     }
+
+
 
     return (
         <form className="search">
