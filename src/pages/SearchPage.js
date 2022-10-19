@@ -1,6 +1,6 @@
 import Search from '../components/Search'
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import "./SearchPage.css";
 import SearchIcon from '@mui/icons-material/Search';
 import DescriptionIcon from '@mui/icons-material/Description';
@@ -8,8 +8,17 @@ import ImageIcon from '@mui/icons-material/Image';
 import LocalOfferIcon from '@mui/icons-material/LocalOffer';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import RoomIcon from '@mui/icons-material/Room';
+import SearchResults from '../components/SearchResults';
+import useSearch from '../hooks/useSearch';
+import mocks from '../mocks';
 
 function SearchPage(){
+
+const {search} = useLocation();
+const searchTerm = search?.split('?')[1];
+const data = mocks;
+console.log(data)
+//const {data} = useSearch(searchTerm);
 return (
     <div className="searchPage">
 
@@ -66,7 +75,7 @@ return (
         </div>
 
         <div className="searchPage__results">
-        
+            {data && <SearchResults data={data} />}
         </div>
 
     </div>
