@@ -15,10 +15,8 @@ import mocks from '../mocks';
 function SearchPage(){
 
 const {search} = useLocation();
-const searchTerm = search?.split('?')[1];
-const data = mocks;
-console.log(data)
-//const {data} = useSearch(searchTerm);
+const searchTerm = search?.split("?")[1];
+const {data} = useSearch(searchTerm);
 return (
     <div className="searchPage">
 
@@ -75,7 +73,7 @@ return (
         </div>
 
         <div className="searchPage__results">
-            {data && <SearchResults data={data} />}
+            {!!data && <SearchResults data={data} />}
         </div>
 
     </div>
